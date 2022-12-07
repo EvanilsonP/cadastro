@@ -1,17 +1,11 @@
 const express = require('express');
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-    res.send('Olá, mundo!');
-});
+const produtoController = require('../controllers/ProdutoController');
 
-routes.get('/produto/:id?', (req, res) => {
-    console.log(req.params);
-    res.send('Olá');
-});
 
-routes.post('/cadastrar', (req, res) => {
-    res.json(req.body);
-});
+routes.get('/produto/lista', produtoController.listarProduto);
+routes.post('/produto', produtoController.cadastrarProduto);
+
 
 module.exports = routes;
