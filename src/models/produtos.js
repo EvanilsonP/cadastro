@@ -9,6 +9,10 @@ const Produtos = db.define("Produtos", { // Nome do model, especificar quais col
         autoIncrement: true
     },
 
+    nome: {
+        type: DataTypes.INTEGER
+    },
+
     preco: {
         type: DataTypes.FLOAT
     },

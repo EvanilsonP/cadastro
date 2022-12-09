@@ -1,10 +1,19 @@
+const Produtos = require('../models/Produtos');
+
 produtoController = {
-    listarProduto: (req, res) => {
-        res.json([{ nome: 'Produto 1'}, { nome: 'Produto 2'}])
+    async listarProduto(req, res) {
+        const listaDeProdutos = await Produtos.findAll()
+        res.json(listaDeProdutos);
     },
 
-    cadastrarProduto: (req, res) => {
-        res.send('Produto cadastrado!');
+    async cadastrarProduto(req, res) {
+        const { nome, preco, quantidade } = req.body;
+
+        // Partes da coluna que quero preencher
+        const novoProduto = await Produtos.create({
+            nome, preco, quantidade
+        });
+        res.json(novoProduto);
     }
 };
 

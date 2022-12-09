@@ -5,7 +5,7 @@ const produtoController = require('../controllers/ProdutoController');
 
 
 routes.get('/produto/lista', produtoController.listarProduto);
-routes.post('/produto', produtoController.cadastrarProduto);
+routes.post('/produto/criar', produtoController.cadastrarProduto);
 
 
 module.exports = routes;
