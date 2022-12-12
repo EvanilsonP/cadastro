@@ -1,5 +1,6 @@
 const db = require('../database');
 const { DataTypes } = require('sequelize');
+const Fabricantes = require('./Fabricantes.js');
 
 // Cria a estrutura/Model
 const Produtos = db.define("Produtos", { // Nome do model, especificar quais colunas existem na tabela e configurar TABLENAME
@@ -19,6 +20,15 @@ const Produtos = db.define("Produtos", { // Nome do model, especificar quais col
 
     quantidade: {
         type: DataTypes.INTEGER
+    },
+    // Dizer onde a FK faz referência
+    // recebe o modelo que vai fazer referência e a FK
+    fabricante_id: {
+        type: DataTypes.INTEGER,
+        references: {  
+            model: Fabricantes,
+            key: 'id'           // Chave de referência de Fabricantes
+        }
     },
 
     createdAt: {
