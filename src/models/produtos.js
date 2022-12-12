@@ -11,7 +11,7 @@ const Produtos = db.define("Produtos", { // Nome do model, especificar quais col
     },
 
     nome: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
     },
 
     preco: {
