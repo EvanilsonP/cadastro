@@ -19,7 +19,7 @@ Produtos.belongsToMany(Categorias, {
 });
 
 Categorias.belongsToMany(Produtos, {
-    foreignKey: 'categorias_id',
+    foreignKey: 'produto_id',
     through: CategoriaProduto // Espeficiar a tabela intermediária
 });
 
