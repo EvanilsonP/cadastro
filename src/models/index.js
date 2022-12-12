@@ -1,5 +1,6 @@
 // Camada de relacionamento entre Produtos e Fabricantes
 const Produtos = require('./Produtos');
+const Usuarios = require('./Usuarios');
 const Fabricantes = require('./Fabricantes');
 const Categorias = require('./Categorias');
 const CategoriaProduto = require('./CategoriaProduto');
@@ -24,4 +25,4 @@ Categorias.belongsToMany(Produtos, {
 });
 
 
-module.exports = { Produtos, Fabricantes, Categorias };
+module.exports = { Produtos, Fabricantes, Categorias, Usuarios };
