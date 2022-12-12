@@ -21,10 +21,13 @@ produtoController = {
         const categoria = await Categorias.findByPk(categorias_id);
         await novoProduto.setCategorias(categoria);
 
-        res.json(novoProduto);
+        res.status(201).json(novoProduto);
     },
 
     async deletarProduto(req, res) {
+        try {
+            
+        
         const { id } = req.params;
         await Produtos.destroy({
             where: {
@@ -32,12 +35,18 @@ produtoController = {
             }
         });
 
-        res.json('Produto deletado.');
+        res.status(204);
+        } catch (error) {
+            res.status(500).json('Ocorreu algum problema.');
+        }
     },
 
     async atualizarProduto(req, res) {
         const { id } = req.params;
         const { nome, preco, quantidade} = req.body;
+
+        if(!id) return res.status(400).json('ID não enviado.');
+
         const ProdutoAtualizado = await Produtos.update({
             nome, preco, quantidade
         }, {
