@@ -1,5 +1,7 @@
 const { Usuarios } = require('../models');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const secret = require('../configs/secret');
 
 const authController = {
     async login(req, res) {
@@ -16,8 +18,9 @@ const authController = {
         if(!bcrypt.compareSync(senha, usuario.senha)) {
             return res.status(401).json('Senha inválida.');
         }
-
-        return res.json('Logado.');
+        // Gerando token
+        const token = jwt.sign({id: usuario.id, email: usuario.email, nome: usuario.nome}, secret.key);
+        return res.json(token);
     }
 };
 

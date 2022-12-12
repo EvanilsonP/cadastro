@@ -11,6 +11,7 @@ produtoController = {
     },
 
     async cadastrarProduto(req, res) {
+        console.log(req.user);
         const { nome, preco, quantidade, fabricante_id, categorias_id } = req.body;
 
         // Partes da coluna que quero preencher
